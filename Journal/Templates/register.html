@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+	  <section id="title">
+	  
+	    
+		<div class="intro split">
+		  <div class="centered">
+			  <h1>Social Media</h1>
+			  <h2> Make a post. Follow people. Like Posts </h2>
+		  </div>	  
+		</div>
+					
+		<div class= "sign-in split">
+		  <div class="centered">
+			<div class="card card-signin">
+				<div class="card-body">
+				    {% for message in get_flashed_messages() %}
+						  <div id="msg" class="alert alert-warning">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							{{ message }}
+						  </div>
+                    {% endfor %}
+					<form class="loginForm" method="post">
+					  <div class="form-label-group">
+						<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+						
+					  </div>
+					  <div class="form-label-group">
+						<input type="username" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
+						
+					  </div>
+
+					  <div class="form-label-group">
+						<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+						
+					  </div>
+					  <div class="form-label-group">
+						<input type="password" name="confirmpassword" id="confirmPassword" class="form-control" oninput="check(this)" placeholder="Confirm Password" required>
+					  </div>
+
+					<button class="btn btn-md btn-primary btn-block text-uppercase" type="submit">Sign up </button>
+											  
+				    </form>	
+					
+				</div>
+			
+			  </div>
+		    </div>
+		 </div>
+					
+						  
+	  </section>
+    <script type="text/javascript" src="{{ url_for('static', filename='script/validation.js') }}"></script>
+{% endblock content %}

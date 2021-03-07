@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card card-signin">
+				<div class="card-body">
+				    {% for message in get_flashed_messages() %}
+						  <div id="msg" class="alert alert-warning">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							{{ message }}
+                          </div>
+                    {% endfor %}
+					<img class="profilepic" src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}" alt="code-img">
+
+					<form class="loginForm" method="post" enctype="multipart/form-data">
+
+                       <div class="form-label-group">
+						   <input type = "file" name = "profileimg" />
+					   </div>
+
+                      <div class="form-label-group">
+						<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+					  </div>
+
+					  <div class="form-label-group">
+						<input type="username" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
+					  </div>
+
+                      <div class="form-label-group">
+						<input type="text" name="profession" id="profession" class="form-control" placeholder="profession" autofocus>
+					  </div>
+
+                      <div class="form-label-group">
+                        <textarea id="bio" name="userbio" rows="4" cols="50" maxlength="128"></textarea>
+                      </div>
+
+					  <div class="form-label-group">
+						<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+					  </div>
+
+					<button class="btn btn-md btn-primary btn-block text-uppercase" type="submit">Update </button>
+
+				    </form>
+
+        </div>
+
+  </div>
+ <script type="text/javascript">
+    $( document ).ready(function() {
+        $("#inputEmail").val('{{user.email}}');
+        $("#username").val('{{user.username}}');
+        $("#bio").val('{{user.bio}}');
+        $("#profession").val('{{user.job}}');
+
+    });
+ </script>
+
+
+{% endblock content %}

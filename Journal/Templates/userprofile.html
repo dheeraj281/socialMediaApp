@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+	  
+	   <div class="profile container-fluid">
+	        {% for message in get_flashed_messages() %}
+				  <div id="msg" class="alert alert-warning">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					{{ message }}
+				  </div>
+			{% endfor %}
+	  
+			<div class="user-intro">
+			<img class="profilepic" src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}" alt="code-img">
+
+			<h3>{{ username }}</h3>
+			<span class="profession"> {{ user.job }} </span>
+			<p> {{ user.bio }} </p>
+			<p>{{ user.followers.count() }} followers |
+			{% if user == current_user %}
+			<a href="{{ url_for('users.update_profile',username=current_user.username) }}"  id = "update" class="card-link">Edit Info</a>
+			{% endif %}
+			{% if user != current_user and current_user.is_following(user) != True %}
+				<a href="{{ url_for('users.follow', username=user.username) }}" id = "follow" class="card-link">Follow</a>
+			 {% elif user != current_user and current_user.is_following(user) %}
+	            <a href="{{ url_for('users.unfollow', username=user.username) }}" id = "unfollow" class="card-link">Unfollow</a>
+			{% endif %}
+			</p>
+			<hr id="bio-divider">
+		  </div>
+
+	   </div>
+
+	   <div class= "post-header">
+		   <h4 class="header-msg"> Latest from {{username}} </h4>
+		   <hr>
+	   </div>
+       <div class="post container-fluid">
+			<div class="postcards">
+              {% for post in posts %}
+				<div class="card">
+					<div id= {{post.id}} class="card-body">
+						<h5 class="card-title"> {{ post.author.username }}</h5>
+						<h6 class="card-subtitle mb-2 text-muted">{{ post.date.strftime('%Y-%m-%d') }}</h6>
+						<div class="user_content">
+                        	{{post.text|safe}}
+						</div>
+						{% if user == current_user %}
+							<a href="{{ url_for('core.update', postid=post.id) }}"  id = "dummy" class="card-link">Edit</a>
+							<a href="{{ url_for('core.deletePost', postid=post.id) }}" class="card-link">Delete</a>
+						{% endif %}
+						<a href="#" class="card-link">Share</a>
+						<a href="#" class="card-link">Like</a>
+					</div>
+				</div>
+				{% endfor %}
+		    </div>
+	   </div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+  <div id="msg" class="alert alert-warning">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{ message }}
+  </div>
+{% endfor %}
+
+{% for user in users %}
+    <p>{{ user.username }}</p>
+    <p>{{ user.email }}</p>
+
+{% endfor %}
+
+
+
+
+{% endblock content %}

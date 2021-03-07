@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="post container-fluid">
+			<div class="postcards">
+
+				<form class="hide" id="updateform" method="post">
+
+					<textarea id="summernote" name="editordata"></textarea>
+
+					<div class="submitpost">
+				  `		<button class="postbutton btn btn-md btn-primary text-uppercase" type="submit">Post </button>
+						<button class="postbutton btn btn-md btn-primary text-uppercase" type="button" onclick="window.location='{{ url_for('core.index') }}'">Cancel </button>
+					</div>
+
+				</form>
+
+                <div class="card">
+					<div id= {{post.id}} class="card-body">
+						<h5 class="card-title">Post Heading</h5>
+						<h6 class="card-subtitle mb-2 text-muted">{{ post.date.strftime('%Y-%m-%d') }}</h6>
+						<div class="user_content">
+                        	{{post.text|safe}}
+						</div>
+					</div>
+				</div>
+            </div>
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename='script/edit.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='script/home.js') }}"></script>
+{% endblock content %}

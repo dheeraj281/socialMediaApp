@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+	  <section id="title">
+	  
+	    
+		<div class="intro split">
+		  <div class="centered">
+			  <h1>Social Media</h1>
+			  <h2> Make a post. Follow people. Like Posts </h2>
+		  </div>	  
+		</div>
+					
+		<div class= "sign-in split">
+		  <div class="centered">
+			<div class="card card-signin">
+				<div class="card-body">
+					 {% for message in get_flashed_messages() %}
+						  <div id="msg" class="alert alert-warning">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							{{ message }}
+						  </div>
+                        {% endfor %}
+					  <form class="loginForm" method="post">
+							  <div class="form-label-group">
+								<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+								
+							  </div>
+
+							  <div class="form-label-group">
+								<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+								
+							  </div>
+
+							  <div class="custom-control custom-checkbox mb-3">
+								<input type="checkbox" class="custom-control-input" name="remember_me" id="customCheck1">
+								<label class="custom-control-label"  for="customCheck1">Remember me</label>
+							  </div>
+							  <button class="btn btn-md btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+							  <hr>
+							  <ul class="slogin">
+								  <button class="btn  btn-md btn-google  text-uppercase" type="submit">Sign in with Google</button>
+								  <button class="btn  btn-md btn-facebook  text-uppercase" type="submit"> Sign in with Facebook</button>
+							</ul>
+							<a class="newac" href="{{ url_for('users.register')}}"> Create an account instead? </a>
+							  
+					</form>	  
+					
+				</div>
+			
+			  </div>
+		    </div>
+		 </div>
+					
+						  
+	  </section>
+  
+{% endblock content %}

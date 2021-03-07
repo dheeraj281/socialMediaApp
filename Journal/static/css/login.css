@@ -1,0 +1,105 @@
+#title{
+	background-color: rgb(228, 249, 245);
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  background-color: rgb(228, 249, 245);
+}
+
+.intro {
+  left: 0;
+}
+.sign-in {
+  right: 0;
+  padding: 0% 0% 12% 6%;
+ 
+}
+
+.centered {
+ 
+  padding:28% 0 13% 12%;
+  
+}
+
+
+
+h1{
+	font-family:"Montserrat";
+	font-weight:900;
+	font-size:3.5rem;
+	line-height:1.5;
+	color:#16697a
+}	
+
+h2 {
+    font-family: "Montserrat-Bold";
+    font-size: 2rem;
+}
+
+.card-signin {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  width: 75%;
+  margin-top: 0;
+  
+}
+.card-signin .card-body {
+  padding:3rem;
+}
+
+.form-signin .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
+  
+}
+
+.btn-google {
+  color: white;
+  background-color: #ea4335;
+  
+}
+
+
+.btn-facebook {
+  color: white;
+  background-color: #3b5998;
+
+}
+.slogin{
+	padding-inline-start: 10px;
+}
+
+
+.slogin button{
+	display: inline-block;
+	margin: 0% 1% 1% 0%;
+	font-size: 12px;
+	
+	
+}
+.newac{
+padding: 0 15% 0;
+font-size: 1.2rem;
+}
