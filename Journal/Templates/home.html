@@ -39,7 +39,7 @@
 						</div>
 						{% if post.author == current_user %}
 							<a href="{{ url_for('core.update', postid=post.id) }}"  id = "dummy" class="card-link">Edit</a>
-							<a href="{{ url_for('core.deletePost', postid=post.id) }}" class="card-link">Delete</a>
+							<a href="#" id= "{{ post.id }}" class="card-link" onclick="deletePost(this)">Delete</a>
 						{% endif %}
 						<a href="#" class="card-link">Share</a>
 						{% if current_user.is_already_liked(post) %}

@@ -42,3 +42,21 @@ function closeEditor(){
    //$('#summernote').summernote('reset');
 }
 
+function deletePost(element){
+    event.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: "/deletepost",
+      data: {
+          id: $(element).attr('id')
+      },
+      dataType: "text",
+      success: function(data){
+                 console.log(data)
+                 $(element).parent('div').parent('div').remove();
+               },
+      error: function(error) {
+          console.log(error);
+      }
+    });
+};
