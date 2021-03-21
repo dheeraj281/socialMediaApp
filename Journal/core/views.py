@@ -1,4 +1,4 @@
-from flask import render_template, request, Blueprint, redirect, url_for, abort, flash
+from flask import render_template, request, Blueprint, redirect, url_for, abort, flash, jsonify
 from flask_login import login_required, logout_user, current_user
 from Journal import db
 from Journal.models import Posts,User
@@ -27,14 +27,15 @@ def logout():
    return redirect(url_for('users.login'))
 
 
-@core.route('/deletepost/<int:postid>', methods=["GET"])
-def deletePost(postid):
+@core.route('/deletepost', methods=["POST"])
+def deletePost():
+    postid = request.values.get("id")
     blog = Posts.query.filter_by(id=postid).first()
     if blog.author != current_user:
         abort(403)
     db.session.delete(blog)
     db.session.commit()
-    return redirect(url_for('core.index'))
+    return jsonify(status="success")
 
 @core.route('/updatepost/<int:postid>', methods=["GET","POST"])
 def update(postid):
